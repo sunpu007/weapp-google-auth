@@ -8,7 +8,7 @@ Page({
     // 存储私钥列表
     codeList: [],
     // 存储倒计时
-    time: parseInt(Date.now() % 30000 / 1000)
+    time: 30 - parseInt(Date.now() % 30000 / 1000)
   },
   onLoad() {
     wx.showLoading({
@@ -46,7 +46,7 @@ Page({
           item.code = util.generateGoogleCode(item.secret).replace(/(\d{3})(\d{3})/, "$1 $2")
           return item
         }),
-        time: parseInt(Date.now() % 30000 / 1000)
+        time: 30 - parseInt(Date.now() % 30000 / 1000)
       })
     }, 1000)
   },
@@ -67,8 +67,6 @@ Page({
           })
           return
         }
-
-
 
         codeList.push(query)
         that.setData({
