@@ -1,24 +1,3 @@
-/**index.wxss**/
-/* .userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
-} */
 .container {
   padding: 0 40rpx;
 }
@@ -63,4 +42,96 @@
   height: 40rpx;
   margin: 25rpx auto;
   /* transform: rotate(45deg); */
+}
+
+.model {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.model-delete > view, .model-edit > view {
+  margin-bottom: 20rpx;
+}
+
+.model-edit {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 70%;
+  border-radius: 10rpx;
+  padding: 40rpx 40rpx 20rpx;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: #FFF;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.model-edit-title {
+  text-align: center;
+  font-size: 34rpx;
+  font-size: #333;
+}
+
+.model-edit-input {
+  margin: 10rpx auto 40rpx !important;
+}
+
+.model-edit-input input {
+  border-bottom: 1rpx solid #666;
+  font-size: 36rpx;
+  height: 60rpx;
+  color: #000;
+}
+
+.model-edit-btn {
+  text-align: right;
+  color: blue;
+}
+.model-edit-btn text {
+  margin-left: 80rpx;
+}
+
+.model-delete {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 70%;
+  border-radius: 10rpx;
+  padding: 40rpx 40rpx 20rpx;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: #FFF;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.model-delete-icon {
+  text-align: center;
+  margin-bottom: 0rpx;
+}
+
+.model-delete-icon image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: -20rpx;
+}
+
+.model-delete-title {
+  text-align: center;
+  font-size: 34rpx;
+}
+
+.model-delete-btn {
+  text-align: right;
+  color: blue;
+}
+.model-delete-btn text {
+  margin-left: 80rpx;
+}
+
+.model-strong {
+  font-weight: 700;
 }

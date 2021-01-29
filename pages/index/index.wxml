@@ -1,16 +1,49 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="item" wx:for="{{codeList}}" wx:key="title">
+  <view class="item" wx:for="{{codeList}}" wx:key="title" bindlongpress="handleLongPress" data-value="{{index}}">
     <view class="item-title">{{item.issuer}}</view>
     <view class="item-code">
-      <text class="item-text">{{item.code}}</text>
+      <text class="item-text">{{item.code || '--- ---'}}</text>
       <view class="item-time">
         {{time}}
         <!-- <time></time> -->
       </view>
     </view>
   </view>
+
   <view class="add-btn" bindtap="add">
-    <cover-image class="add-btn-image" src="/assets/add.png"></cover-image>
+    <image class="add-btn-image" src="/assets/add.png"></image>
+  </view>
+</view>
+
+<!-- 重命名 -->
+<!-- <view class="model">
+  <view class="model-edit">
+    <view class="model-edit-title">重命名</view>
+    <view class="model-edit-input">
+      <input value="海外" />
+    </view>
+    <view class="model-edit-btn">
+      <text bindtap="clearDelAccountModel">取消</text>
+      <text bindtap="delAccount">保存</text>
+    </view>
+  </view>
+</view> -->
+
+<!-- 删除 -->
+<view class="model" wx:if="{{showDelAccountModel}}"  bindtap="clearDelAccountModel">
+  <view class="model-delete" catchtap>
+    <view class="model-delete-icon">
+      <image src="/assets/warning.png"></image>
+    </view>
+    <view class="model-delete-title">要移除<text class="model-strong"> {{codeList[editIndex].issuer}} </text>吗？</view>
+    <view>移除该账号后会<text class="model-strong">让您无法</text>生成验证码，但<text class="model-strong">不会</text>关闭双重身份验证。您可能会因此无法登陆自己的账号。</view>
+    <view>在移除该账号之前，请执行一下操作：</view>
+    <view>·关闭该账号的双重身份验证功能，或者</view>
+    <view>·确保您可以通过其他方法生成验证码</view>
+    <view class="model-delete-btn">
+      <text bindtap="clearDelAccountModel">取消</text>
+      <text bindtap="delAccount">移除账号</text>
+    </view>
   </view>
 </view>
