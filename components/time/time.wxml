@@ -1,0 +1,2 @@
+<!--component/time/time.wxml-->
+<canvas type="2d" id="myCanvas"></canvas>

@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="item" wx:for="{{codeList}}" wx:key="title">
+    <view class="item-title">{{item.title}}</view>
+    <view class="item-code">
+      <text class="item-text">{{item.code}}</text>
+      <view class="item-time">
+        {{time}}
+        <!-- <time></time> -->
+      </view>
+    </view>
+  </view>
+  <view class="add-btn" bindtap="add">+</view>
+</view>

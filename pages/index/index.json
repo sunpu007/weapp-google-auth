@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "time": "/components/time/time"
+  }
+}
