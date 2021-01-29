@@ -57,14 +57,41 @@ const getTOTP = (secretKey, time) => {
   return otp;
 };
 
-const generateGoogleCode = (secretKey) => {
+const generateGoogleCode = secretKey => {
   return getTOTP(secretKey, Date.now() / 1000 / 30);
+}
+
+const getQueryObjectByUrl = url => {
+  const search = url.substring(url.lastIndexOf('?') + 1)
+  const obj = {}
+  const reg = /([^?&=]+)=([^?&=]*)/g
+  search.replace(reg, (rs, $1, $2) => {
+    const name = decodeURIComponent($1)
+    let val = decodeURIComponent($2)
+    val = String(val)
+    obj[name] = val
+    return rs
+  })
+  return obj
+}
+
+const arrayIsExistKeyValue = (arr, key, value) => {
+  if (arr.length > 0) {
+    return arr.some(item => item[key] === value);
+  }
+  return false;
 }
 
 module.exports = {
   formatTime,
-  generateGoogleCode
+  generateGoogleCode,
+  getQueryObjectByUrl,
+  arrayIsExistKeyValue
 }
+
+// const arr = [{"issuer":"Jumpserer","secret":"GAXGS4T2MJYXO5ZT","code":"977 441"},{"secret":"PG2C7BYZOCFB77VU","issuer":"HUOBI (2021-01-29)","code":"506 765"}]
+
+// console.log(arrayIsExistKeyValue(arr, 'secret', 'GAXGS4T2MJYXO5Z'))
 
 // 0.irzbqww3
 // 0.irzbqww3

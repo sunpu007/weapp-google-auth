@@ -57,3 +57,10 @@
   box-shadow: 2rpx 2rpx 10rpx rgba(0, 0, 0, 0.5);
   background: #fff;
 }
+
+.add-btn-image {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 25rpx auto;
+  /* transform: rotate(45deg); */
+}

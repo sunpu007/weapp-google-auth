@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="item" wx:for="{{codeList}}" wx:key="title">
-    <view class="item-title">{{item.title}}</view>
+    <view class="item-title">{{item.issuer}}</view>
     <view class="item-code">
       <text class="item-text">{{item.code}}</text>
       <view class="item-time">
@@ -10,5 +10,7 @@
       </view>
     </view>
   </view>
-  <view class="add-btn" bindtap="add">+</view>
+  <view class="add-btn" bindtap="add">
+    <cover-image class="add-btn-image" src="/assets/add.png"></cover-image>
+  </view>
 </view>

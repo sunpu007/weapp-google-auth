@@ -5,18 +5,27 @@ const util = require('../../utils/util.js')
 let time = null
 Page({
   data: {
+    // 存储私钥列表
     codeList: [],
+    // 存储倒计时
     time: parseInt(Date.now() % 30000 / 1000)
   },
   onLoad() {
+    wx.showLoading({
+      title: '加载中...',
+    })
+    // 从本地读取私钥列表
     this.setData({
       codeList: (wx.getStorageSync('codeList') || []).map(item => {
-        item.code = util.generateGoogleCode(item.secretKey).replace(/(\d{3})(\d{3})/, "$1 $2")
+        item.code = util.generateGoogleCode(item.secret).replace(/(\d{3})(\d{3})/, "$1 $2")
         return item
       })
     })
-    this.setTime()
+    // 开启倒计时
+    this.startTime()
+    wx.hideLoading()
   },
+  // 更新/存储私钥列表
   setStorage() {
     wx.setStorage({
       key: 'codeList',
@@ -26,24 +35,47 @@ Page({
       })
     })
   },
-  setTime() {
+  // 倒计时开始
+  startTime() {
+    time = null
     const that = this
     // 定时器更新
     time = setInterval(_ => {
       that.setData({
         codeList: that.data.codeList.map(item => {
-          item.code = util.generateGoogleCode(item.secretKey).replace(/(\d{3})(\d{3})/, "$1 $2")
+          item.code = util.generateGoogleCode(item.secret).replace(/(\d{3})(\d{3})/, "$1 $2")
           return item
         }),
         time: parseInt(Date.now() % 30000 / 1000)
       })
-      // console.log(parseInt(Date.now() % 30000 / 1000) / 30)
     }, 1000)
   },
   add() {
+    // 添加私钥
+    const that = this
     wx.scanCode({
       success (res) {
-        console.log(res.result)
+        const query = util.getQueryObjectByUrl(res.result)
+        let codeList = that.data.codeList
+
+        // 判断当前私钥是否存在
+        if (util.arrayIsExistKeyValue(codeList, 'secret', query.secret)) {
+          wx.showToast({
+            title: '秘钥已保存',
+            icon: 'none',
+            duration: 2000
+          })
+          return
+        }
+
+
+
+        codeList.push(query)
+        that.setData({
+          codeList: codeList
+        })
+        that.setStorage()
+        that.startTime()
       }
     })
   },
