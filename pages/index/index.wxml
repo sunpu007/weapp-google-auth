@@ -17,21 +17,21 @@
 </view>
 
 <!-- 重命名 -->
-<!-- <view class="model">
-  <view class="model-edit">
+<view class="model" wx:if="{{showEditAccountModel}}" bindtap="clearModel" data-value="showEditAccountModel">
+  <view class="model-edit" catchtap>
     <view class="model-edit-title">重命名</view>
     <view class="model-edit-input">
-      <input value="海外" />
+      <input value="{{editValue}}" data-value="editValue" bindinput="inputChange" />
     </view>
     <view class="model-edit-btn">
-      <text bindtap="clearDelAccountModel">取消</text>
-      <text bindtap="delAccount">保存</text>
+      <text bindtap="clearModel" data-value="showEditAccountModel">取消</text>
+      <text bindtap="saveAccount">保存</text>
     </view>
   </view>
-</view> -->
+</view>
 
 <!-- 删除 -->
-<view class="model" wx:if="{{showDelAccountModel}}"  bindtap="clearDelAccountModel">
+<view class="model" wx:if="{{showDelAccountModel}}" bindtap="clearModel" data-value="showDelAccountModel">
   <view class="model-delete" catchtap>
     <view class="model-delete-icon">
       <image src="/assets/warning.png"></image>
@@ -42,7 +42,7 @@
     <view>·关闭该账号的双重身份验证功能，或者</view>
     <view>·确保您可以通过其他方法生成验证码</view>
     <view class="model-delete-btn">
-      <text bindtap="clearDelAccountModel">取消</text>
+      <text bindtap="clearModel" data-value="showDelAccountModel">取消</text>
       <text bindtap="delAccount">移除账号</text>
     </view>
   </view>

@@ -10,7 +10,10 @@ Page({
     // 保存编辑序列
     editIndex: 0,
     // 删除model控制变量
-    showDelAccountModel: false
+    showDelAccountModel: false,
+    // 编辑model控制变量
+    showEditAccountModel: false,
+    editValue: ''
   },
   onLoad() {
     wx.showLoading({
@@ -91,6 +94,10 @@ Page({
       success (res) {
         if (res.tapIndex === 0) {
           // 编辑
+          that.setData({
+            showEditAccountModel: true,
+            editValue: that.data.codeList[index].issuer
+          })
         }
         if (res.tapIndex === 1) {
           // 删除
@@ -110,13 +117,31 @@ Page({
     })
     this.setStorage()
     this.startTime()
-    this.clearDelAccountModel()
+    this.clearModel(null, 'showDelAccountModel')
+  },
+  // 保存编辑
+  saveAccount() {
+    let codeList = this.data.codeList
+    codeList[this.data.editIndex].issuer = this.data.editValue
+    this.setData({
+      codeList: codeList
+    })
+    this.setStorage()
+    this.startTime()
+    this.clearModel(null, 'showEditAccountModel')
   },
   // 隐藏model
-  clearDelAccountModel() {
-    this.setData({
-      showDelAccountModel: false
-    })
+  clearModel(e, value) {
+    let updateObj = {}
+    const key = e ? e.currentTarget.dataset.value : value
+    updateObj[key] = false
+    this.setData(updateObj)
+  },
+  // 监听输入框输入
+  inputChange(e) {
+    let updateObj = {}
+    updateObj[e.currentTarget.dataset.value] = e.detail.value
+    this.setData(updateObj)
   },
   // 页面卸载销毁定时器
   onUnLoad() {
