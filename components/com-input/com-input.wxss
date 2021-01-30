@@ -1,0 +1,36 @@
+.input-item {
+  border-radius: 10rpx;
+  border: 1rpx solid #666;
+  padding: 30rpx;
+  display: flex;
+  position: relative;
+}
+
+.input-item text {
+  width: 210rpx;
+  color: #666;
+  /* transition: .3s linear; */
+}
+
+.input-item input {
+  width: 100%;
+  /* background: blue; */
+}
+
+.input-item.active text {
+  position: absolute;
+  left: 20rpx;
+  top: -20rpx;
+  font-size: 30rpx;
+  background: #fff;
+  padding: 0 10rpx;
+  width: auto;
+}
+
+.error-msg {
+  position: absolute;
+  left: 30rpx;
+  bottom: -35rpx;
+  font-size: 30rpx;
+  color: red;
+}

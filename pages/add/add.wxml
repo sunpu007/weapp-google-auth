@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="input-item">
+    <com-input label="账号名" errorMsg="{{issuerErrorMsg}}" data-value="issuer" bindchangeName="changeName"></com-input>
+  </view>
+  <view class="input-item">
+    <com-input label="您的秘钥" errorMsg="{{secretErrorMsg}}" data-value="secret" bindchangeName="changeName"></com-input>
+  </view>
+  <view class="add-btn" bindtap="save"><text>添加</text></view>
+</view>

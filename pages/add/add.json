@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "输入账号信息",
+  "usingComponents": {
+    "com-input": "/components/com-input/com-input"
+  }
+}

@@ -11,8 +11,22 @@
     </view>
   </view>
 
-  <view class="add-btn" bindtap="add">
-    <image class="add-btn-image" src="/assets/add.png"></image>
+  <view class="add-item-container" wx:if="{{addBtnStatus}}">
+    <view bindtap="add">
+      <text>扫描二维码</text>
+      <view class="add-item-icon">
+        <image src="/assets/scanning.png"></image>
+      </view>
+    </view>
+    <view bindtap="toAdd">
+      <text>输入设置秘钥</text>
+      <view class="add-item-icon">
+        <image src="/assets/keyboard.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="add-btn" bindtap="showAddModel">
+    <image class="{{ addBtnStatus ? 'actvie add-btn-image' : 'add-btn-image' }}" src="/assets/add.png"></image>
   </view>
 </view>
 
@@ -37,7 +51,8 @@
       <image src="/assets/warning.png"></image>
     </view>
     <view class="model-delete-title">要移除<text class="model-strong"> {{codeList[editIndex].issuer}} </text>吗？</view>
-    <view>移除该账号后会<text class="model-strong">让您无法</text>生成验证码，但<text class="model-strong">不会</text>关闭双重身份验证。您可能会因此无法登陆自己的账号。</view>
+    <view>移除该账号后会<text class="model-strong">让您无法</text>生成验证码，但<text
+        class="model-strong">不会</text>关闭双重身份验证。您可能会因此无法登陆自己的账号。</view>
     <view>在移除该账号之前，请执行一下操作：</view>
     <view>·关闭该账号的双重身份验证功能，或者</view>
     <view>·确保您可以通过其他方法生成验证码</view>

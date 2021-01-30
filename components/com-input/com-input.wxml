@@ -1,0 +1,5 @@
+<view class="{{ (isFocus || value != '') ? 'input-item active' : 'input-item' }}">
+  <text>{{label}}</text>
+  <input type="text" value="{{value}}" bindfocus="onfocus" bindblur="onblur" bindinput="inputChange" />
+  <view class="error-msg" wx:if="errorMsg!=''">{{errorMsg}}</view>
+</view>

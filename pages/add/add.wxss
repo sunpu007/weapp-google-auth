@@ -1,0 +1,21 @@
+.container {
+  padding: 40rpx;
+}
+
+.input-item {
+  margin-bottom: 50rpx;
+}
+
+.add-btn {
+  text-align: right;
+}
+
+.add-btn text {
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  border-radius: 10rpx;
+  padding: 15rpx 70rpx;
+  font-size: 30rpx;
+  background-color: blue;
+}

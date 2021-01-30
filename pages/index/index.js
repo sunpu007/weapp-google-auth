@@ -8,12 +8,16 @@ Page({
     // 存储倒计时
     time: 30 - parseInt(Date.now() % 30000 / 1000),
     // 保存编辑序列
-    editIndex: 0,
+    editIndex: -1,
     // 删除model控制变量
     showDelAccountModel: false,
     // 编辑model控制变量
     showEditAccountModel: false,
-    editValue: ''
+    // 编辑信息存储
+    editValue: '',
+
+    // 存储添加按钮状态
+    addBtnStatus: false
   },
   onLoad() {
     wx.showLoading({
@@ -55,7 +59,15 @@ Page({
       })
     }, 1000)
   },
+  showAddModel() {
+    this.setData({
+      addBtnStatus: !this.data.addBtnStatus
+    })
+  },
   add() {
+    this.setData({
+      addBtnStatus: false
+    })
     // 添加私钥
     const that = this
     wx.scanCode({
@@ -82,29 +94,25 @@ Page({
       }
     })
   },
+  toAdd() {
+    wx.navigateTo({
+      url: '/pages/add/add',
+    })
+  },
   // 长按编辑
   handleLongPress (e) {
     const index = e.currentTarget.dataset.value
-    this.setData({
-      editIndex: index
-    })
     const that = this
     wx.showActionSheet({
       itemList: ['编辑', '删除'],
       success (res) {
-        if (res.tapIndex === 0) {
-          // 编辑
-          that.setData({
-            showEditAccountModel: true,
-            editValue: that.data.codeList[index].issuer
-          })
-        }
-        if (res.tapIndex === 1) {
-          // 删除
-          that.setData({
-            showDelAccountModel: true
-          })
-        }
+        that.setData({
+          editIndex: index
+        })
+        // 编辑
+        if (res.tapIndex === 0) that.setData({ showEditAccountModel: true, editValue: that.data.codeList[index].issuer })
+        // 删除
+        if (res.tapIndex === 1)  that.setData({ showDelAccountModel: true })
       }
     })
   },
