@@ -6,22 +6,22 @@
       <text class="item-text">{{item.code || '--- ---'}}</text>
       <view class="item-time">
         {{time}}
-        <!-- <time></time> -->
       </view>
     </view>
   </view>
-
-  <view class="add-item-container" wx:if="{{addBtnStatus}}">
-    <view bindtap="add">
-      <text>扫描二维码</text>
-      <view class="add-item-icon">
-        <image src="/assets/scanning.png"></image>
+  <view class="add-model" wx:if="{{addBtnStatus}}" bindtap="showAddModel">
+    <view class="add-item-container" catchtap>
+      <view bindtap="add">
+        <text>扫描二维码</text>
+        <view class="add-item-icon">
+          <image src="/assets/scanning.png"></image>
+        </view>
       </view>
-    </view>
-    <view bindtap="toAdd">
-      <text>输入设置秘钥</text>
-      <view class="add-item-icon">
-        <image src="/assets/keyboard.png"></image>
+      <view bindtap="toAdd">
+        <text>输入设置秘钥</text>
+        <view class="add-item-icon">
+          <image src="/assets/keyboard.png"></image>
+        </view>
       </view>
     </view>
   </view>

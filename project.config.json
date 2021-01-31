@@ -59,13 +59,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "name": "pages/add/add",
-          "pathName": "pages/add/add",
-          "scene": null
-        }
-      ]
+      "list": []
     }
   }
 }

@@ -72,6 +72,9 @@ Page({
     const that = this
     wx.scanCode({
       success (res) {
+        wx.vibrateShort({
+          type: 'heavy'
+        })
         const query = util.getQueryObjectByUrl(res.result)
         let codeList = that.data.codeList
         // 判断当前私钥是否存在
